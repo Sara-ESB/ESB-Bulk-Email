@@ -1,0 +1,1 @@
+{"functions":{"api/process-queue.js":{"maxDuration":60},"api/health.js":{"maxDuration":30}}}

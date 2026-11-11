@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>E‑Service Book Campaign Platform</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef2ef;--cd:#fff;--tx:#17231c;--mu:#5d6a62;--g:#0B3C26;--au:#B58922;--rd:#9E2A2B;--ln:#d9e0db;--gt:#fff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1511;--cd:#16201a;--tx:#e9eeea;--mu:#9aa89f;--g:#7fc79f;--ln:#26342b;--gt:#0e1511;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1511;--cd:#16201a;--tx:#e9eeea;--mu:#9aa89f;--g:#7fc79f;--ln:#26342b;--gt:#0e1511;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 "Hind Siliguri",system-ui,sans-serif}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:var(--cd);border-bottom:2px solid var(--au)}
+h1{font:600 18px "Source Serif 4",Georgia,serif;margin:0;color:var(--g)}
+#logo{width:40px;height:40px;border-radius:50%;background:#fff;flex:none;object-fit:contain}
+@media(min-width:700px){#logo{width:52px;height:52px}}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:4px;overflow-x:auto;padding:8px 12px;background:var(--cd);border-bottom:1px solid var(--ln)}
+nav button{flex:none;border:0;background:none;color:var(--mu);padding:8px 12px;border-radius:8px;font:inherit;cursor:pointer}
+nav button.on{background:var(--g);color:var(--gt)}
+main{padding:14px 14px 90px;max-width:900px;margin:auto}
+.c{background:var(--cd);border:1px solid var(--ln);border-radius:10px;padding:14px;margin-bottom:12px}
+h2{font:600 16px "Source Serif 4",Georgia,serif;margin:0 0 10px;color:var(--g)}
+label{display:block;font-size:13px;color:var(--mu);margin:8px 0 3px}
+input,select,textarea{width:100%;font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--ln);border-radius:8px;padding:8px 10px}
+input[type=checkbox]{width:auto}textarea{min-height:110px;resize:vertical}
+button.b{background:var(--g);color:var(--gt);border:0;border-radius:8px;padding:9px 14px;font:inherit;cursor:pointer;margin:8px 6px 0 0}
+button.b:disabled{opacity:.5;cursor:wait}
+button.b.s{background:none;color:var(--g);border:1px solid var(--g)}button.b.d{background:none;color:var(--rd);border:1px solid var(--rd)}
+.r{display:flex;gap:10px;flex-wrap:wrap}.r>*{flex:1 1 150px}
+.chs{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px}.chs button{flex:none;margin:0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-top:1px solid var(--ln)}
+.row:first-of-type{border-top:0}.row small{color:var(--mu);display:block;word-break:break-word}
+.t{font-size:12px;padding:2px 8px;border-radius:99px;border:1px solid var(--ln);white-space:nowrap}
+.t.sent,.t.ready,.t.active{color:var(--g);border-color:var(--g)}.t.sending,.t.adm{color:var(--au);border-color:var(--au)}.t.own{background:var(--au);color:#fff;border-color:var(--au)}.t.failed,.t.ban{color:var(--rd);border-color:var(--rd)}
+.bar{height:10px;background:var(--ln);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--au)}
+.k{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}.k div{padding:10px;border:1px solid var(--ln);border-radius:8px}.k b{font-size:22px;color:var(--g);display:block}
+.m{background:#fff3d6;color:#5a4410;border-radius:8px;padding:8px 10px;font-size:13px;margin-bottom:10px}.ok{color:var(--g);font-size:13px;margin-top:8px;white-space:pre-wrap}
+.err{background:#fde8e8;color:#7a1d1d;border-radius:8px;padding:12px;margin:14px 0}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:54px;height:54px;border-radius:50%;background:#25D366;display:grid;place-items:center;z-index:9;box-shadow:0 3px 10px rgba(0,0,0,.3)}
+#md{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:30;align-items:center;justify-content:center;padding:16px}
+#md>div{background:var(--cd);color:var(--tx);border-radius:12px;padding:18px;max-width:440px;width:100%;max-height:85vh;overflow:auto}
+#ts{display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));background:#17231c;color:#fff;padding:10px 14px;border-radius:10px;font-size:14px;z-index:40;max-width:90%}
+</style></head><body>
+<header><h1>E‑Service Book<br><span style="font:400 12px 'Hind Siliguri';color:var(--mu)">Campaign Platform</span></h1>
+<div id="who" style="flex:1;text-align:right;font-size:12px;line-height:1.5"></div><img id="logo" src="logo.png" alt="Bangladesh e‑Servicebook Company Ltd. logo"></header>
+<nav id="nav"></nav><main id="v"><div class="c">Loading…</div></main><div id="md"></div><div id="ts"></div>
+<a class="wa" id="wa" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21l1.6-4.6A9 9 0 1 1 8 19.6z"/><path d="M9 8c0 3.5 3 6.5 6.5 6.5l1-1.4-2-1-.8.8c-1-.4-2-1.4-2.4-2.4l.8-.8-1-2z" fill="#fff" stroke="none"/></svg></a>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script>
+const $=i=>document.getElementById(i),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let sb=null,ME=null,tab="dash",CH="em",msg="",AT="in",AS="ov",D={mode:"single"},AV={},C=[],M=[],U=[],L=[],BUSY=false;
+const CAP=300,CHN={em:"Email",sms:"SMS",wa:"WhatsApp",pop:"Pop-up"},DB={em:"email",sms:"sms",wa:"wa",pop:"pop"};
+const RL=()=>({user:1,admin:2,super:3}[ME&&ME.role]||0),isP=c=>c==="sms"||c==="wa",okE=x=>/^\S+@\S+\.\S+$/.test(x||"");
+const ph=x=>{let d=String(x||"").replace(/\D/g,"");if(d.length===11&&d[0]==="0")d="88"+d;return d};
+const okP=p=>/^8801[3-9]\d{8}$/.test(p)||(!/^880/.test(p)&&/^[1-9]\d{9,14}$/.test(p));
+const CATS=()=>[...new Set(["Student","Employee","Employer"].concat(C.map(c=>c.category)))];
+const tag=u=>u.role==="super"?'<span class="t own">supreme-admin</span>':u.role==="admin"?'<span class="t adm">Admin</span>':'<span class="t">User</span>';
+const logA=a=>{try{sb.rpc("log_action",{a})}catch(e){}};
+function toast(t){const e=$("ts");e.textContent=t;e.style.display="block";clearTimeout(toast.h);toast.h=setTimeout(()=>e.style.display="none",4000)}
+function fatal(t){$("nav").innerHTML="";$("v").innerHTML=`<div class="err"><b>Setup needed</b><br>${t}</div>`}
+function fail(t){msg=t;draw()}
+function modal(h){const m=$("md");if(!h){m.style.display="none";m.innerHTML="";return}m.innerHTML="<div>"+h+"</div>";m.style.display="flex"}
+function showPw(c){document.querySelectorAll("input.pw").forEach(i=>i.type=c.checked?"text":"password")}
+window.addEventListener("error",e=>toast("Error: "+(e.message||"unknown")));window.addEventListener("unhandledrejection",e=>toast("Error: "+((e.reason&&e.reason.message)||e.reason)));
+async function run(fn){if(BUSY)return;BUSY=true;try{await fn()}catch(e){msg="Something went wrong: "+((e&&e.message)||e);draw()}finally{BUSY=false}}
+async function init(){
+ const c=window.CFG;$("wa").href="https://wa.me/"+((c&&c.WA_NUMBER)||"8801714666555")+"?text="+encodeURIComponent("Hello E‑Service Book team, I would like to know more.");
+ if(!c||!/^https:\/\/[^\/]+\.supabase\.co/.test(c.SUPABASE_URL||"")||!c.SUPABASE_ANON_KEY||/YOUR-/.test(c.SUPABASE_URL+c.SUPABASE_ANON_KEY))return fatal("Open <code>config.js</code> in your GitHub repository, paste your Supabase Project URL and anon key between the quotes, save, and let Vercel redeploy.");
+ if(!window.supabase)return fatal("The Supabase library could not load. Check your internet connection or turn off ad blockers, then refresh.");
+ sb=window.supabase.createClient(c.SUPABASE_URL,c.SUPABASE_ANON_KEY);
+ try{const {data:{session}}=await sb.auth.getSession();if(session)await boot();else draw()}catch(e){fatal("Could not reach Supabase: "+esc(e.message))}
+ setInterval(()=>{if(ME&&!BUSY&&["dash","hist","sched"].includes(tab))refresh().then(draw).catch(()=>{})},60000)}
+async function boot(){const {data:{user}}=await sb.auth.getUser();if(!user)return draw();
+ let r=await sb.from("profiles").select("*").eq("id",user.id).maybeSingle();
+ if(!r.data){await sb.rpc("ensure_profile",{p_name:""});r=await sb.from("profiles").select("*").eq("id",user.id).maybeSingle()}
+ if(r.error||!r.data){msg="Your profile was not found. Make sure schema.sql ran completely in Supabase.";await sb.auth.signOut();ME=null;return draw()}
+ if(r.data.status==="banned"){msg="This account is banned. Ask an admin to reactivate it.";await sb.auth.signOut();ME=null;return draw()}
+ ME=r.data;await refresh();draw()}
+async function refresh(){const a=await Promise.all([sb.from("contacts").select("*").order("created_at",{ascending:false}).limit(2000),sb.from("messages").select("*").order("created_at",{ascending:false}).limit(500)]);C=a[0].data||[];M=a[1].data||[];
+ if(RL()>=2){const b=await Promise.all([sb.from("profiles").select("*").order("created_at"),sb.from("activity_log").select("*").order("at",{ascending:false}).limit(200)]);U=b[0].data||[];L=b[1].data||[]}}
+function draw(){$("who").innerHTML=ME?`<b>${esc(ME.name)}</b> ${tag(ME)}<br><a href="#" onclick="out();return false" style="color:var(--g)">Sign out</a>`:"";
+ if(!ME){$("nav").innerHTML="";$("v").innerHTML=authV();return}AV={};
+ const T=[["dash","Dashboard"],["contacts","Contacts"],["compose","Compose"],["hist","History"],["sched","Scheduled"]].concat(RL()>=2?[["admin","Admin panel"]]:[],[["help","Help"]]);
+ if(!T.some(t=>t[0]===tab))tab="dash";
+ $("nav").innerHTML=T.map(t=>`<button class="${t[0]===tab?"on":""}" onclick="tab='${t[0]}';msg='';draw()">${t[1]}</button>`).join("");
+ $("v").innerHTML=(["dash","compose","hist","sched"].includes(tab)?chBar():"")+({dash,contacts,compose,hist,sched,admin,help}[tab])()}
+function chBar(){return`<div class="chs">${Object.keys(CHN).map(k=>`<button class="b ${CH===k?"":"s"}" style="${CH===k&&k==="wa"?"background:#25D366;border-color:#25D366;color:#fff":""}" onclick="setCh('${k}')">${CHN[k]}</button>`).join("")}</div>`}
+function setCh(x){CH=x;D={mode:"single"};msg="";draw()}
+/* ---------- accounts ---------- */
+function authV(){AT=AT||"in";const t=(k,l)=>`<button class="b ${AT===k?"":"s"}" style="margin:0 6px 8px 0" onclick="AT='${k}';msg='';draw()">${l}</button>`;
+ const pw=`<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" onchange="showPw(this)"> Show password</label>`;
+ const f=AT==="in"?`<label>Email</label><input id="le" type="email" autocomplete="username" autocapitalize="none" value="${esc(AV.le||"")}"><label>Password</label><input id="lp" class="pw" type="password" autocomplete="current-password">${pw}<button id="b-login" class="b" onclick="run(login)">Log in</button><p style="font-size:13px;color:var(--mu)">You stay logged in on this device until you sign out.</p>`
+ :AT==="up"?`<label>Email</label><input id="se" type="email" autocomplete="username" autocapitalize="none" value="${esc(AV.se||"")}"><label>Password (6+ characters)</label><input id="sp" class="pw" type="password" autocomplete="new-password">${pw}<label>Your name (optional)</label><input id="sn" autocomplete="name" value="${esc(AV.sn||"")}"><button id="b-signup" class="b" onclick="run(signup)">Create account</button><p style="font-size:13px;color:var(--mu)">You are logged in right away. New accounts start as User.</p>`
+ :`<div class="m">Owner setup: only an email, a password and the owner code. The account is named Supreme Admin.</div><label>Email</label><input id="oe" type="email" autocomplete="username" autocapitalize="none" value="${esc(AV.oe||"")}"><label>Password (6+ characters)</label><input id="op" class="pw" type="password" autocomplete="new-password">${pw}<label>Owner code</label><input id="oc" class="pw" type="password" autocomplete="off"><button id="b-owner" class="b" onclick="run(mkOwner)">Create owner account</button>`;
+ return`<div class="c" style="max-width:420px;margin:30px auto"><h2>Welcome</h2>${t("in","Log in")}${t("up","Sign up")}${t("own","Owner setup")}${f}<div class="ok">${esc(msg)}</div></div>`}
+const nice=e=>/invalid login/i.test(e.message)?"Wrong email or password.":/already registered/i.test(e.message)?"That email already has an account. Try logging in.":/rate limit/i.test(e.message)?"Too many attempts. Wait a minute and try again.":e.message;
+async function login(){AV.le=$("le").value;const {error}=await sb.auth.signInWithPassword({email:$("le").value.trim().toLowerCase(),password:$("lp").value});
+ if(error)return fail(nice(error));msg="";tab="dash";await boot();if(ME){logA("Logged in");if(RL()>=2)toast("Open the Admin panel from the menu bar.")}}
+async function signup(){AV.se=$("se").value;AV.sn=$("sn").value;const e=$("se").value.trim().toLowerCase(),p=$("sp").value;
+ if(!okE(e))return fail("Enter a valid email address.");if(p.length<6)return fail("Use a password of 6 or more characters.");
+ const {data,error}=await sb.auth.signUp({email:e,password:p,options:{data:{name:$("sn").value.trim()||e.split("@")[0],username:e.split("@")[0]}}});
+ if(error)return fail(nice(error));
+ if(!data.session)return fail("Account created, but Supabase wants the email confirmed first. Turn off “Confirm email” in Supabase (Authentication → Providers → Email), or confirm via the email you received.");
+ msg="";tab="dash";await boot();if(ME){logA("New account created");toast("Welcome! Your account is ready.")}}
+async function mkOwner(){AV.oe=$("oe").value;const e=$("oe").value.trim().toLowerCase(),p=$("op").value,code=$("oc").value.trim();
+ if(!okE(e))return fail("Enter a valid email address.");if(p.length<6)return fail("Use a password of 6 or more characters.");if(!code)return fail("Enter the owner code.");
+ let r=await sb.auth.signUp({email:e,password:p,options:{data:{name:"Supreme Admin",username:"owner"}}});
+ if(r.error&&/already registered/i.test(r.error.message))r=await sb.auth.signInWithPassword({email:e,password:p});
+ if(r.error)return fail(/invalid login/i.test(r.error.message)?"That email already has an account with a different password.":nice(r.error));
+ if(!r.data.session)return fail("Turn off “Confirm email” in Supabase (Authentication → Providers → Email), then try again.");
+ const x=await fetch("/api/claim-owner",{method:"POST",headers:{authorization:"Bearer "+r.data.session.access_token,"content-type":"application/json"},body:JSON.stringify({code})});
+ const j=await x.json().catch(()=>({error:"The server did not answer correctly (HTTP "+x.status+"). Check that the api folder is in your GitHub repository and Vercel finished deploying."}));
+ if(!x.ok){await sb.auth.signOut();return fail(j.error||"Could not create the owner account.")}
+ msg="";tab="dash";await boot();toast("Owner account ready. Open the Admin panel from the menu bar.")}
+async function out(){logA("Logged out");await sb.auth.signOut();ME=null;tab="dash";AT="in";CH="em";D={mode:"single"};msg="";draw()}
+/* ---------- dashboard ---------- */
+function dash(){const ch=DB[CH],o=M.filter(m=>m.channel===ch&&m.direction==="out"),t0=new Date();t0.setHours(0,0,0,0);
+ const used=o.filter(m=>(m.status==="sent"||m.status==="ready")&&new Date(m.sent_at||m.created_at)>=t0).length,n=s=>o.filter(m=>m.status===s).length;
+ const by=[...new Set(CATS().concat(["Uncategorized"]))].map(c=>`<div class="row"><span>${esc(c)}</span><span>${o.filter(m=>m.category===c).length}</span></div>`).join("");
+ const ks=CH==="pop"?[["active","Active pop-ups"]]:isP(CH)?[["queued","Queued"],["ready","Ready"],["sent","Sent"]]:[["queued","Queued"],["sending","Sending"],["sent","Sent"],["failed","Failed"],["skipped","Skipped"]];
+ return`<div class="c"><h2>Today · ${CHN[CH]}</h2><div class="bar"><i style="width:${Math.min(100,used/CAP*100)}%"></i></div><p>${used} of ${CAP} used today</p></div><div class="c"><h2>${CHN[CH]} results</h2><div class="k">${ks.map(k=>`<div><b>${n(k[0])}</b>${k[1]}</div>`).join("")}</div></div><div class="c"><h2>By category</h2>${by}</div>`}
+/* ---------- contacts ---------- */
+function contacts(){const f=D.cf||"",l=C.filter(c=>!f||c.category===f);
+ return`<div class="c"><h2>Add contact</h2><div class="r"><input id="an" placeholder="Name"><input id="ae" placeholder="Email"><input id="ap" placeholder="Phone (01…)"><input id="ac" placeholder="Company"><input id="ak" list="cl" placeholder="Category"><datalist id="cl">${CATS().map(c=>`<option value="${esc(c)}">`).join("")}</datalist></div><button id="b-addc" class="b" onclick="run(addC)">Add contact</button>
+ <label>Import (lines: name, email, company, category, phone)</label><textarea id="imp" placeholder="Amina Begum, amina@example.com, Sky Co, Employee, 01712345678"></textarea><button id="b-imp" class="b s" onclick="run(imp)">Import</button><button class="b s" onclick="chk()">Check number format</button><input type="file" accept=".csv,.txt" onchange="impF(this)" style="margin-top:8px"><div class="ok">${esc(msg)}</div></div>
+ <div class="c"><h2>Contacts (${l.length})</h2><select onchange="D.cf=this.value;draw()"><option value="">All categories</option>${CATS().map(c=>`<option ${c===f?"selected":""}>${esc(c)}</option>`).join("")}</select>
+ ${l.map(c=>`<div class="row"><span>${esc(c.name)} <span class="t">${esc(c.category)}</span>${c.unsubscribed?' <span class="t ban">Opted out</span>':""}<small>${esc(c.email||"no email")} · ${c.phone?"+"+esc(c.phone)+(okP(c.phone)?"":" (check number)"):"no phone"} ${esc(c.company||"")}</small></span><span><button class="b s" onclick="msgTo(${c.id})">Message</button><button class="b d" onclick="run(()=>unsub(${c.id}))">${c.unsubscribed?"Resubscribe":"Opt out"}</button>${RL()>=2?`<button class="b d" onclick="run(()=>delC(${c.id}))">Delete</button>`:""}</span></div>`).join("")||"<p>No contacts yet. Add one above.</p>"}</div>`}
+async function addC(){const e=$("ae").value.trim().toLowerCase(),p=ph($("ap").value);if(!okE(e)&&p.length<10)return fail("Enter a valid email or a phone number.");
+ const {error}=await sb.from("contacts").insert({name:$("an").value.trim()||e||p,email:okE(e)?e:null,phone:p||null,company:$("ac").value.trim(),category:$("ak").value.trim()||"Uncategorized"});
+ if(error)return fail(error.code==="23505"?"That email already exists.":error.message);logA("Added a contact");msg="Contact added.";await refresh();draw()}
+async function imp(){let bad=0,dup=0,rows=[];const seen=new Set(C.map(c=>c.email).filter(Boolean)),sp=new Set(C.map(c=>c.phone).filter(Boolean));
+ $("imp").value.split("\n").forEach(l=>{if(!l.trim())return;const p=l.split(",").map(x=>x.trim()),e=(p[1]||"").toLowerCase(),pn=ph(p[4]);if(!okE(e)&&pn.length<10){bad++;return}
+  if((okE(e)&&seen.has(e))||(pn&&sp.has(pn))){dup++;return}if(okE(e))seen.add(e);if(pn)sp.add(pn);
+  rows.push({name:p[0]||e||pn,email:okE(e)?e:null,company:p[2]||"",category:p[3]||"Uncategorized",phone:pn||null})});
+ if(rows.length){const {error}=await sb.from("contacts").insert(rows);if(error)return fail(error.message)}
+ msg=`Imported ${rows.length}. Duplicates skipped: ${dup}. Invalid rows: ${bad}.`;if(rows.length)logA("Imported "+rows.length+" contacts");await refresh();draw()}
+function impF(i){const f=i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{$("imp").value=r.result};r.readAsText(f)}
+function chk(){const b=C.filter(c=>c.phone&&!okP(c.phone));msg=(b.length?b.length+" number(s) look invalid: "+b.map(c=>c.name).join(", ")+".":"All phone numbers look valid.")+" This checks the format only. It cannot tell whether a number is on WhatsApp.";draw()}
+async function unsub(id){const c=C.find(x=>x.id===id),{error}=await sb.from("contacts").update({unsubscribed:!c.unsubscribed}).eq("id",id);if(error)return fail(error.message);await refresh();draw()}
+async function delC(id){const {error}=await sb.from("contacts").delete().eq("id",id);if(error)return fail(error.message);await refresh();draw()}
+function msgTo(id){const c=C.find(x=>x.id===id);if(CH==="pop")CH="em";D={mode:"single",to:isP(CH)?(c.phone||""):(c.email||"")};tab="compose";draw()}
+/* ---------- compose ---------- */
+const WHEN=`<label>When</label><div class="r"><select id="wh" onchange="$('dt').style.display=this.value==='later'?'block':'none'"><option value="now">Send now</option><option value="later">Schedule</option></select><input id="dt" type="datetime-local" style="display:none"></div>`;
+function compose(){const m=CH,w=isP(m),md=D.mode;
+ const note={em:`Emails send automatically from ${esc(CFG.FROM_EMAIL)}, about a batch every minute, up to ${CAP} a day. Extra emails go out the next day.`,sms:`Messages are queued as Ready. Tap Open SMS in History to send each one from your phone.`,wa:`Messages are queued as Ready. Tap Open chat in History to send each one from WhatsApp.`,pop:`Build a pop-up for your website. Copy the code from History and paste it before </body> on any page.`}[m];
+ const top=`<div class="c"><h2>${m==="pop"?"Create a pop-up":"Write "+(m==="em"?"an email":m==="wa"?"a WhatsApp message":"an SMS")}</h2><div class="m">${esc(note)}</div>`;
+ if(m==="pop")return top+`<label>Heading</label><input id="pt" value="${esc(D.sj||"")}"><label>Message</label><textarea id="bd">${esc(D.bd||"")}</textarea><div class="r"><div><label>Button text</label><input id="bt" value="${esc(D.bt||"Learn More")}"></div><div><label>Link (website or landing page)</label><input id="bl" value="${esc(D.bl||"")}" placeholder="https://"></div></div><label>Show after (seconds)</label><input id="dl" type="number" min="0" value="${esc(D.dl??5)}"><button id="b-send" class="b" onclick="run(send)">Save pop-up</button><button class="b s" onclick="popPrev()">Preview</button><div class="ok">${esc(msg)}</div></div>`;
+ return top+`<div class="r"><button class="b ${md==="single"?"":"s"}" onclick="D.mode='single';draw()">One person</button><button class="b ${md==="bulk"?"":"s"}" onclick="D.mode='bulk';draw()">Many people</button></div>
+ ${m==="em"?`<label>From</label><input value="${esc(CFG.FROM_EMAIL)}" readonly>`:""}
+ ${md==="single"?`<label>To (type any ${w?"phone number":"email address"})</label><input id="to" list="dl" value="${esc(D.to||"")}" placeholder="${w?"01XXXXXXXXX":"name@example.com"}"><datalist id="dl">${C.map(c=>w?(c.phone?`<option value="${esc(c.phone)}">${esc(c.name)}</option>`:""):(c.email?`<option value="${esc(c.email)}">${esc(c.name)}</option>`:"")).join("")}</datalist>`
+ :`<label>Send to</label><select id="grp" onchange="cnt()"><option value="*">All contacts</option>${CATS().map(c=>`<option>${esc(c)}</option>`).join("")}</select>`}
+ ${m==="em"?`<label>Subject</label><input id="sj" value="${esc(D.sj||"")}">`:""}<label>Message (use {{name}} and {{company}})</label><textarea id="bd" oninput="cnt()">${esc(D.bd||"")}</textarea>
+ ${m==="em"?`<div class="r"><div><label>Button text</label><input id="bt" value="${esc(D.bt||"Learn More")}"></div><div><label>Button link (website or landing page)</label><input id="bl" value="${esc(D.bl||"")}" placeholder="https://"></div></div>`:m==="wa"?`<label>Link (optional)</label><input id="bl" value="${esc(D.bl||"")}" placeholder="https://"><label>Media link (optional: image, PDF or video URL)</label><input id="md2" value="${esc(D.md||"")}" placeholder="https://">`:""}
+ ${WHEN}<div class="ok" id="rc"></div><button id="b-send" class="b" style="${m==="wa"?"background:#25D366":""}" onclick="run(send)">${m==="em"?"Send":"Queue messages"}</button><button class="b s" onclick="ex()">Insert example</button><div class="ok">${esc(msg)}</div></div>`}
+function cnt(){const e=$("rc");if(!e)return;const w=isP(CH);let n=1;if(D.mode==="bulk"){const g=$("grp").value;n=C.filter(c=>(w?c.phone&&okP(c.phone):c.email)&&!c.unsubscribed&&(g==="*"||c.category===g)).length}
+ const len=($("bd")||{value:""}).value.length;e.textContent=n+" recipient(s)."+(CH==="sms"?" "+len+" characters, "+Math.max(1,Math.ceil(len/160))+" SMS part(s).":"")}
+function ex(){D.sj="Welcome to E‑Service Book";D.bd="Hello {{name}},\n\nWelcome! E‑Service Book keeps your service records digital, safe and easy to find.\n\nRegards,\nE‑Service Book Team";D.bl=D.bl||"https://eservicebook.com.bd";if(CH==="pop"){D.sj="New: E‑Service Book";D.bd="Keep your service records digital and safe."}draw()}
+const fill=(t,c)=>String(t).replace(/{{name}}/g,c.name||"").replace(/{{company}}/g,c.company||"your organization");
+function whenAt(){if($("wh").value!=="later"||!$("dt").value)return new Date().toISOString();const t=new Date($("dt").value).getTime();return isNaN(t)||t<=Date.now()?null:new Date(t).toISOString()}
+async function send(){const m=CH,w=isP(m);
+ if(m==="pop"){const t=$("pt").value.trim(),b=$("bd").value.trim(),l=$("bl").value.trim();if(!t||!b)return fail("Add a heading and a message.");if(l&&!/^https?:\/\//.test(l))return fail("The link must start with https://");
+  const {error}=await sb.rpc("queue_messages",{p_rows:[{channel:"pop",to_addr:"Website visitors",name:"Pop-up",subject:t,body:b,btn_text:$("bt").value,btn_link:l,meta:{delay:+$("dl").value||0}}]});
+  if(error)return fail(error.message);msg="Pop-up saved. Open History and tap Get code.";D={mode:"single"};await refresh();return draw()}
+ const bd=$("bd").value.trim(),bl=($("bl")||{value:""}).value.trim(),sj=m==="em"?$("sj").value.trim():"",mdl=($("md2")||{value:""}).value.trim();
+ if(!bd||(m==="em"&&!sj))return fail("Add "+(m==="em"?"a subject and ":"")+"a message first.");
+ if((bl&&!/^https?:\/\//.test(bl))||(mdl&&!/^https?:\/\//.test(mdl)))return fail("Links must start with https://");
+ if(D.mode==="bulk"&&RL()<2)return fail("Bulk sending needs an admin account.");
+ let to;if(D.mode==="single"){const v=$("to").value.trim(),k=w?ph(v):v.toLowerCase();if(w?!okP(k):!okE(k))return fail("Enter a valid "+(w?"phone number (01…).":"email address."));
+  const f=C.find(c=>w?c.phone===k:c.email===k);if(f&&f.unsubscribed)return fail("That contact has opted out.");to=[f||{name:k,email:w?null:k,phone:w?k:null,category:"Uncategorized"}]}
+ else{const g=$("grp").value;to=C.filter(c=>(w?c.phone&&okP(c.phone):c.email)&&!c.unsubscribed&&(g==="*"||c.category===g))}
+ if(!to.length)return fail("No recipients. Opted-out contacts and contacts without "+(w?"a valid phone":"an email")+" are skipped.");
+ const at=whenAt();if(!at)return fail("Pick a time in the future to schedule.");
+ const rows=to.map(c=>({channel:DB[m],to_addr:w?c.phone:c.email,name:c.name||"",category:c.category||"Uncategorized",from_addr:m==="em"?CFG.FROM_EMAIL:null,subject:fill(sj,c),body:fill(bd,c)+(w&&bl?"\n"+bl:"")+(mdl?"\n"+mdl:""),btn_text:m==="em"?$("bt").value:null,btn_link:m==="em"?bl:null,send_at:at}));
+ const {error}=await sb.rpc("queue_messages",{p_rows:rows});if(error)return fail(error.message);
+ msg=rows.length+" message(s) "+($("wh").value==="later"?"scheduled.":w?"ready in History. Tap "+(m==="sms"?"Open SMS":"Open chat")+" to send each one.":"queued. They send automatically within a minute or two.");D={mode:D.mode};await refresh();draw()}
+function popCode(p){const cfg=JSON.stringify({h:p.subject,b:p.body,t:p.btn_text||"Learn More",l:(p.btn_link||"").replace(/['"<>\s]/g,""),d:(p.meta&&isFinite(p.meta.delay))?+p.meta.delay:5,k:"esb"+p.id}).replace(/</g,"\\u003c");
+ return`<script>(function(c){try{if(localStorage.getItem(c.k))return}catch(e){}setTimeout(function(){var o=document.createElement("div");o.style.cssText="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:99999;font-family:Arial,sans-serif";var d=document.createElement("div");d.style.cssText="background:#fff;color:#17231c;max-width:360px;width:90%;border-radius:12px;padding:22px;text-align:center;border-top:4px solid #B58922";var h=document.createElement("h3");h.style.cssText="margin:0 0 8px;color:#0B3C26";h.textContent=c.h;var p=document.createElement("p");p.textContent=c.b;d.appendChild(h);d.appendChild(p);if(c.l){var a=document.createElement("a");a.href=c.l;a.textContent=c.t;a.style.cssText="display:inline-block;background:#0B3C26;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none";d.appendChild(a)}var x=document.createElement("p");var y=document.createElement("a");y.href="#";y.textContent="Close";y.style.cssText="color:#667069;font-size:13px";y.onclick=function(e){e.preventDefault();o.remove();try{localStorage.setItem(c.k,1)}catch(z){}};x.appendChild(y);d.appendChild(x);o.appendChild(d);document.body.appendChild(o)},c.d*1000)})(${cfg})<\/script>`}
+function popPrev(){const t=$("pt").value.trim()||"Heading",b=$("bd").value.trim()||"Your message",l=$("bl").value.trim();modal(`<h2>Pop-up preview</h2><div style="text-align:center;border-top:4px solid #B58922;padding:16px"><h3 style="margin:0 0 8px;color:var(--g)">${esc(t)}</h3><p>${esc(b)}</p>${l?`<span class="t own" style="padding:8px 16px">${esc($("bt").value)}</span>`:""}</div><button class="b" onclick="modal()">Close</button>`)}
+/* ---------- history ---------- */
+function hist(){const f=D.hf||"",ch=DB[CH],l=M.filter(m=>m.channel===ch&&(m.status!=="queued"||new Date(m.send_at)<=new Date())&&!["cancelled"].includes(m.status)&&(!f||m.category===f));
+ return`<div class="c"><h2>${CHN[CH]} history by category</h2><select onchange="D.hf=this.value;draw()"><option value="">All categories</option>${[...new Set(CATS().concat(["Uncategorized"]))].map(c=>`<option ${c===f?"selected":""}>${esc(c)}</option>`).join("")}</select><button class="b s" onclick="run(async()=>{await refresh();draw()})">Refresh</button>
+ ${l.map(m=>`<div class="row"><span><b>${esc(m.subject||(m.body||"").slice(0,40))}</b><small>${esc(m.name||"")} · ${esc(m.to_addr)} · ${esc(m.category)} · ${new Date(m.created_at).toLocaleString()}${m.error?" · "+esc(m.error):""}</small></span><span>${m.status==="ready"?`<button class="b" style="background:#25D366;margin:0" onclick="run(()=>openM(${m.id}))">${m.channel==="sms"?"Open SMS":"Open chat"}</button>`:m.channel==="pop"?`<button class="b s" style="margin:0" onclick="showCode(${m.id})">Get code</button>`:`<span class="t ${esc(m.status)}">${esc(m.status)}</span>`}</span></div>`).join("")||"<p>Nothing here yet. Send from Compose.</p>"}</div>`}
+async function openM(id){const m=M.find(x=>x.id===id);window.open(m.channel==="sms"?"sms:+"+m.to_addr+"?&body="+encodeURIComponent(m.body):"https://wa.me/"+m.to_addr+"?text="+encodeURIComponent(m.body),"_blank","noopener");
+ await sb.from("messages").update({status:"sent",sent_at:new Date().toISOString()}).eq("id",id);await refresh();draw()}
+function showCode(id){const p=M.find(x=>x.id===id);modal(`<h2>Pop-up code</h2><p style="font-size:13px;color:var(--mu)">Paste this just before &lt;/body&gt; on your website page. It shows once per visitor.</p><textarea id="pc" readonly>${esc(popCode(p))}</textarea><button class="b" onclick="copyCode()">Copy code</button><button class="b s" onclick="modal()">Close</button>`)}
+function copyCode(){const t=$("pc");t.select();try{navigator.clipboard.writeText(t.value).then(()=>toast("Code copied."),()=>{document.execCommand("copy");toast("Code copied.")})}catch(e){try{document.execCommand("copy");toast("Code copied.")}catch(x){toast("Select the text and copy it.")}}}
+function sched(){const ch=DB[CH],l=M.filter(m=>m.channel===ch&&m.status==="queued"&&new Date(m.send_at)>new Date()).sort((a,b)=>new Date(a.send_at)-new Date(b.send_at));
+ return`<div class="c"><h2>Scheduled ${CHN[CH]} (${l.length})</h2>${l.map(m=>`<div class="row"><span><b>${esc(m.subject||(m.body||"").slice(0,40))}</b><small>To ${esc(m.to_addr)} · sends ${new Date(m.send_at).toLocaleString()}</small></span><button class="b d" onclick="run(()=>cancelM(${m.id}))">Cancel</button></div>`).join("")||"<p>Nothing scheduled. Choose Schedule in Compose.</p>"}</div>`}
+async function cancelM(id){const {error}=await sb.from("messages").update({status:"cancelled"}).eq("id",id).eq("status","queued");if(error)return fail(error.message);await refresh();draw()}
+/* ---------- admin panel ---------- */
+function admin(){if(RL()<2)return"";const sbn=[["ov","Overview"],["us","Users"],["lg","Activity log"]];
+ return`<div class="chs">${sbn.map(s=>`<button class="b ${AS===s[0]?"":"s"}" onclick="AS='${s[0]}';msg='';draw()">${s[1]}</button>`).join("")}</div>`+({ov:ovV,us:usersV,lg:logV}[AS])()}
+function ovV(){return`<div class="c"><h2>Admin panel</h2><div class="k"><div><b>${U.length}</b>Accounts</div><div><b>${U.filter(u=>u.role==="admin").length}</b>Admins</div><div><b>${U.filter(u=>u.status==="banned").length}</b>Banned</div><div><b>${C.length}</b>Contacts</div><div><b>${M.filter(m=>m.direction==="out").length}</b>Campaign items</div></div></div>
+ <div class="c"><h2>What you can do here</h2><div class="row"><span><b>Users</b><small>${RL()>=3?"Give the Admin role, ban and reactivate accounts.":"Reactivate banned accounts."}</small></span></div><div class="row"><span><b>Activity log</b><small>Logins, sends, imports, role changes and bans.</small></span></div><div class="row"><span><b>Check your email setup</b><small>Open /api/health?key=YOUR_CRON_SECRET on this site to test the database and email login.</small></span></div></div>`}
+function usersV(){const own=RL()>=3;
+ return`<div class="c"><h2>Users and roles</h2><div class="m">${own?"You are the owner: give the Admin role, ban and reactivate accounts.":"Admins can reactivate banned accounts."}</div>${U.map(u=>`<div class="row"><span><b>${esc(u.name)}</b> ${tag(u)}${u.status==="banned"?' <span class="t ban">Banned</span>':""}<small>${esc(u.username||"")} · joined ${new Date(u.created_at).toLocaleDateString()}</small></span><span>${u.role==="super"?"":(own?`<select style="width:auto" onchange="run(()=>act('set_role',{uid:'${u.id}',new_role:this.value}))"><option value="user" ${u.role==="user"?"selected":""}>User</option><option value="admin" ${u.role==="admin"?"selected":""}>Admin</option></select> `:"")+(u.status==="banned"?`<button class="b s" onclick="run(()=>act('set_status',{uid:'${u.id}',new_status:'active'}))">Reactivate</button>`:(own?`<button class="b d" onclick="run(()=>act('set_status',{uid:'${u.id}',new_status:'banned'}))">Ban</button>`:""))}</span></div>`).join("")}</div>`}
+async function act(fn,a){const {error}=await sb.rpc(fn,a);if(error)toast(error.message);await refresh();draw()}
+function logV(){return`<div class="c"><h2>Activity log</h2>${L.map(x=>`<div class="row"><span>${esc(x.action)}<small>${esc(x.username||"-")} · ${new Date(x.at).toLocaleString()}</small></span></div>`).join("")||"<p>No activity yet.</p>"}</div>`}
+function help(){const a=RL()>=2;return`<div class="c"><h2>How to open the Admin panel</h2><p>${a?"You can see it now: it is the <b>Admin panel</b> button in the menu bar at the top. Inside, use Overview, Users and Activity log.":"The Admin panel is for Admins and the owner. Ask the owner to give you the Admin role, then log in again."}</p></div>
+ <div class="c"><h2>Campaign types</h2><div class="row"><span><b>Email</b><small>Sends automatically with a button link and unsubscribe link.</small></span></div><div class="row"><span><b>SMS</b><small>Tap Open SMS to send from your phone.</small></span></div><div class="row"><span><b>WhatsApp</b><small>Tap Open chat to send each message.</small></span></div><div class="row"><span><b>Pop-up</b><small>Builds code you paste on your website.</small></span></div></div>
+ <div class="c"><h2>Who can do what</h2><p style="font-size:13px;color:var(--mu)">User: contacts and single messages. Admin: bulk sending, Admin panel, reactivating accounts. Owner (supreme-admin): everything, including roles and bans. Send only to people who agreed to hear from you.</p></div>
+ <div class="c"><h2>Support</h2><a class="b" style="display:inline-block;background:#25D366;text-decoration:none;border-radius:8px;padding:9px 14px;color:#fff" href="${esc($("wa").href)}" target="_blank" rel="noopener">Chat with support on WhatsApp</a></div>`}
+init();
+</script></body></html>

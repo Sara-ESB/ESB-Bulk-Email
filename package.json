@@ -1,0 +1,1 @@
+{"name":"esb-campaign-platform","version":"2.0.0","private":true,"engines":{"node":">=18"},"dependencies":{"@supabase/supabase-js":"^2.45.4","nodemailer":"^6.9.15"}}
